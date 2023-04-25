@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    show-sql: true
+    generate-ddl: true
+
+twilio:
+  account:
+    sid: # TODO
+    authToken: # TODO
+    phoneNumber: # TODO
