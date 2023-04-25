@@ -25,7 +25,10 @@ dependencies {
 
     implementation("com.twilio.sdk:twilio:9.5.0")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("com.h2database:h2")
+
+    implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.1.0")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")

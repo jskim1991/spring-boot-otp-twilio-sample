@@ -2,6 +2,8 @@ package io.jay.otpapp;
 
 import com.twilio.Twilio;
 import io.jay.otpapp.config.TwilioConfiguration;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.SpringApplication;
@@ -10,6 +12,10 @@ import org.springframework.util.Assert;
 
 @SpringBootApplication
 @RequiredArgsConstructor
+@OpenAPIDefinition(info = @Info(
+        title = "Spring Boot OTP App using Twilio",
+        version = "1.0"
+))
 public class MainApplication {
 
     private final TwilioConfiguration twilioConfig;
