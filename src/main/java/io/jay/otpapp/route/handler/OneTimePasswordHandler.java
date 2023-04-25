@@ -1,4 +1,4 @@
-package io.jay.otpapp.resource.handler;
+package io.jay.otpapp.route.handler;
 
 import io.jay.otpapp.dto.PasswordResetRequest;
 import io.jay.otpapp.service.OneTimePasswordService;

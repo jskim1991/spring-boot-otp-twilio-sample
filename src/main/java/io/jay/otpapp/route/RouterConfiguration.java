@@ -1,8 +1,8 @@
-package io.jay.otpapp.resource;
+package io.jay.otpapp.route;
 
 import io.jay.otpapp.dto.PasswordResetRequest;
 import io.jay.otpapp.dto.PasswordResetResponse;
-import io.jay.otpapp.resource.handler.OneTimePasswordHandler;
+import io.jay.otpapp.route.handler.OneTimePasswordHandler;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springdoc.core.annotations.RouterOperation;
 import org.springdoc.core.annotations.RouterOperations;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -23,6 +24,11 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 @RequiredArgsConstructor
 public class RouterConfiguration {
     private final OneTimePasswordHandler handler;
+
+    @Bean
+    public WebProperties.Resources resources() {
+        return new WebProperties.Resources();
+    }
 
     @Bean
     @RouterOperations({

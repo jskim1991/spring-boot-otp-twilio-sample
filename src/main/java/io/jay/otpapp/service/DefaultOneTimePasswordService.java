@@ -6,6 +6,8 @@ import io.jay.otpapp.config.TwilioConfiguration;
 import io.jay.otpapp.dto.OTPStatus;
 import io.jay.otpapp.dto.PasswordResetRequest;
 import io.jay.otpapp.dto.PasswordResetResponse;
+import io.jay.otpapp.exception.NoOneTimePasswordException;
+import io.jay.otpapp.exception.WrongOneTimePasswordException;
 import io.jay.otpapp.repository.OneTimePasswordRepository;
 import io.jay.otpapp.repository.entity.OneTimePasswordEntity;
 import lombok.RequiredArgsConstructor;
@@ -59,7 +61,7 @@ public class DefaultOneTimePasswordService implements OneTimePasswordService {
     public Mono<String> validate(String username, String userInputOtp) {
         var row = repository.findById(username);
         if (!row.isPresent()) {
-            return Mono.error(new NoSuchElementException("No data found for this username"));
+            return Mono.error(new NoOneTimePasswordException("No data found for this username"));
         }
 
         var storedOtp = row.get().getOtp();
@@ -67,7 +69,7 @@ public class DefaultOneTimePasswordService implements OneTimePasswordService {
             repository.deleteById(username);
             return Mono.just("Valid OTP.");
         } else {
-            return Mono.error(new IllegalArgumentException("Invalid OTP. Please retry."));
+            return Mono.error(new WrongOneTimePasswordException("Invalid OTP. Please retry."));
         }
     }
 
